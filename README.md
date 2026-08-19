@@ -241,3 +241,5 @@ Tablas principales: `users`, `plans`, `subscriptions`, `orders`, `courier_locati
 - Notificaciones push (FCM/APNs) al cambiar el estado del pedido.
 - Despliegue: contenedores Docker del backend + CI/CD, y Stripe con claves de producción.
 última verificación de auto-deploy con repo privado
+
+prueba de reconexión
