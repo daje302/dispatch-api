@@ -1,0 +1,43 @@
+# Blueprint de Render para desplegar la API (plan gratuito).
+# Úsalo con "New + Blueprint" en Render o como referencia para crear
+# un Web Service manualmente con el Dockerfile.
+#
+# Requisitos:
+#  1. Sube la carpeta backend/ a un repositorio Git (GitHub/GitLab).
+#  2. En Render: New + Blueprint y selecciona el repo.
+#  3. Define las variables de entorno (las marcadas con sync: false)
+#     desde el Dashboard del servicio.
+
+services:
+  - type: web
+    name: dispatch-api
+    runtime: docker
+    plan: free
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false # Pégalo aquí (cadena de Neon, ej. postgresql://...?sslmode=require)
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: STRIPE_SECRET_KEY
+        sync: false # sk_test_... o sk_live_...
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false # whsec_... (de "stripe listen" o del dashboard)
+      - key: STRIPE_PRICE_BASIC
+        sync: false # price_... (opcional; se crean con el seed)
+      - key: STRIPE_PRICE_PRO
+        sync: false
+      - key: APP_URL
+        sync: false # https://<tu-servicio>.onrender.com
+      - key: DISPATCH_PROVIDER
+        value: mock
+      - key: DISPATCH_BASE_URL
+        sync: false
+      - key: DISPATCH_API_KEY
+        sync: false
