@@ -178,7 +178,14 @@ Flujo: el repartidor emite `courier:location` → el servidor la persiste en `co
 
 ## Despliegue gratis en Render (con PostgreSQL en Neon)
 
-El backend tiene un **Dockerfile** y un **render.yaml** listos para el plan gratuito.
+> ✅ **Ya está desplegado y funcionando:**
+> - **API:** https://dispatch-api-xkii.onrender.com (`/health`, plan free de Render)
+> - **Base de datos:** Neon PostgreSQL (`postgresql://...ep-super-shape-awxb8xmo-pooler...neon.tech/neondb`)
+> - **Repo:** https://github.com/daje302/dispatch-api
+> - **Cuentas de prueba:** `demo@dispatch.app / Demo1234!` (cliente) y `repartidor@dispatch.app / Repartidor123!` (repartidor)
+> - Verificado end-to-end: registro/login, planes, creación de pedidos, asignación a repartidor y Socket.io en tiempo real.
+
+El backend tiene un **Dockerfile** y un **render.yaml** listos para el plan gratuito. Para re-desplegar a otro espacio: cambia `https://<tu-servicio>.onrender.com` por el dominio que quieras usar.
 
 ### 1. Base de datos (Neon, gratis)
 1. Regístrate en https://neon.tech y crea un proyecto.
